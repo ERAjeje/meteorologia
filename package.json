@@ -1,0 +1,31 @@
+{
+  "name": "meteorologia",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ERAjeje/meteorologia.git",
+  "author": "Edson Ajeje <edson.ajeje@terra.com.br>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "cors": "2.8.5",
+    "dotenv": "8.2.0",
+    "express": "4.17.1",
+    "axios": "0.19.2",
+    "pg": "^8.6.0",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.4",
+    "sequelize-cli": "^6.2.0"
+  },
+  "scripts": {
+    "serve": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "client/"
+    ]
+  },
+  "type": "module"
+}
