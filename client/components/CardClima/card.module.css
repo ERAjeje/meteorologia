@@ -1,0 +1,35 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2), 2px 3px 6px rgba(0, 0, 0, 0.2), -1px -1px 6px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.image {
+    margin-left: 0.5rem;
+    width: 7rem;
+}
+
+.title {
+    flex-direction: row;
+}
+
+.icon {
+    width: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.iconTint {
+    width: 1rem;
+    margin-right: 0.5rem;
+}
