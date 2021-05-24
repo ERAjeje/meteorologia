@@ -6,7 +6,7 @@ const axios = require('axios');
 class PlaceController {
     async store(req, res) {
         try {
-            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${req.body.name}&appid=${process.env.api_key}&units=metric&lang=pt_br`);
+            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(req.body.name)}&appid=${process.env.api_key}&units=metric&lang=pt_br`);
 
             const [place, created] = await Place.findOrCreate({
                 where: {
@@ -25,7 +25,7 @@ class PlaceController {
             }
             return res.json(response.data);
         } catch (error) {
-            return res.status(400).json(error);
+            return res.status(400).json({ error });
         }
     }
 
@@ -34,7 +34,7 @@ class PlaceController {
             const data = await Place.findAll({ order: [['updated_at', 'DESC']], limit: 5 });
             return res.json(data);
         } catch (error) {
-            return res.status(400).json(error);
+            return res.status(400).json({ error });
         }
     }
 }
