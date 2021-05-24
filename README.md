@@ -70,3 +70,5 @@ Agora basta abrir no seu navegador a url [http://localhost:3000](http://localhos
 ## Gif do Projeto
 
 ![Gif do projeto funcionando](./public/1.gif)
+![Gif do projeto funcionando](./public/2.gif)
+![Gif do projeto funcionando](./public/3.gif)
