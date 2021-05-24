@@ -1,26 +1,29 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { CardClima } from '../components/CardClima/CardClima';
 import styles from '../styles/Home.module.css';
+import { Input } from 'reactstrap';
 
 export default function Home() {
 
-  const handleClick = () => {
-    const inputCity = document.getElementById('city');
-    axios.post('/api/search', { name: inputCity.value })
-      .then(response => {
-        if (response.status !== 200) throw Error(response.message);
-
-        setRes(response.data);
-        callApi();
-      });
+  const handleClick = (event) => {
+    const element = document.getElementById('city');
+    const inputCity = event.target.id !== 'button' ? event.target.innerHTML : (element.value != '' ? element.value : null);
+    if (inputCity !== null)
+      axios.post('/api/search', { name: inputCity })
+        .then(response => {
+          setRes(response.data);
+          callApi();
+        });
   }
 
   const callApi = () => {
     axios.get('/api/search')
       .then(response => {
-        if (response.status !== 200) throw Error(response.message);
+        if (response.status !== 200) alert(response.message);
 
         setCities(response.data);
       })
@@ -38,7 +41,8 @@ export default function Home() {
       <Head>
         <title>Clima</title>
         <meta name="description" content="Meteorologia" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
 
       <main className={styles.main}>
@@ -51,12 +55,14 @@ export default function Home() {
               <div className="col-5">
                 <div className={styles.columnLeft}>
                   <div className={styles.inputCard}>
-                    <input type="text" id="city" className={styles.input} />
-                    <input type="button" value="Buscar" onClick={handleClick} className={styles.button} />
+                    <Input type="text" id="city" className={styles.input} />
+                    <input type="button" value="Buscar" onClick={handleClick} className={styles.button} id="button" />
                   </div>
                   {
                     cities.map(city => {
-                      return <div className={styles.city} key={city.id}><h5>{city.name}, {city.country}</h5></div>;
+                      return <div onClick={handleClick} className={styles.city} key={city.id}>
+                        <a><h5>{city.name}, {city.country}</h5></a>
+                      </div>;
                     })
                   }
                 </div>
@@ -74,7 +80,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-
+        <div className={styles.license}>Favicon feito por &nbsp;<a href="https://www.freepik.com" title="Freepik" ><span> Freepik</span></a></div>
       </footer>
     </div>
   )
