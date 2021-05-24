@@ -29,13 +29,15 @@ npm install
 cd client
 npm install
 ```
-Uma vez que as dependencias estejam instaladas, você vai precisar preencher o arquivo `.env` com as seguintes informações
+Uma vez que as dependencias estejam instaladas, você vai precisar preencher o arquivo `.env.example` com as seguintes informações e renomeá-lo para `.env`. A chave de api é disponibilizada no site [openweathermap](https://home.openweathermap.org).
 ```
 user = "root"
 host = "localhost"
 database = "meteorologia_db"
 password = "admin"
 port_db = "5432"
+
+api_key = {sua-chave-de-api}
 ```
 É preciso criar a base de dados `meteorologia_db` e trocar as informações de `user`, `port_db` e `password` para as mesmas que você utiliza no seu banco de dados.
 
@@ -46,19 +48,25 @@ Abra dois terminais de comando (cmd ou bash) na pasta principal onde os arquivos
 
 No primeiro digite
 ```
-yarn serve
+yarn start
 ```
 ou
 ```
-npm run serve
+npm run start
 ```
 Na outra janeja digite
 ```
 cd client
-yarn dev
+yarn start
 ```
 ou
 ```
 cd client
-npm run dev
+npm run start
 ```
+
+Agora basta abrir no seu navegador a url [http://localhost:3000](http://localhost:3000).
+
+## Gif do Projeto
+
+![Gif do projeto funcionando](./public/1.gif)
