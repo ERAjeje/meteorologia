@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloudSunRain, faTemperatureHigh, faTint } from '@fortawesome/free-solid-svg-icons';
+import { faCloudSun, faTemperatureHigh, faTint } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 
 import {
@@ -27,7 +27,7 @@ export const CardClima = ({ data }) => {
                                 <FontAwesomeIcon className={styles.iconTint} icon={faTint} />: {data.main.humidity}
                             </h6>
                             <h6>
-                                <FontAwesomeIcon className={styles.icon} icon={faCloudSunRain} />: {data.weather[0].description}
+                                <FontAwesomeIcon className={styles.icon} icon={faCloudSun} />: {data.weather[0].description}
                             </h6>
                         </CardBody>
                     </div>
