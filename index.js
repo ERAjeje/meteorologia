@@ -1,9 +1,11 @@
-import express from 'express';
-import cors from 'cors';
-import path from 'path';
-import dotenv from 'dotenv';
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+const dotenv = require('dotenv');
 
-import route from './src/routes/routes.js';
+require('./src/app/database/index');
+const route = require('./src/routes/routes');
+
 
 /**
  * Leitura do arquivo .env e inicialização do app express
@@ -17,7 +19,6 @@ app.use(express.json());
 /**
  * Vinculando o nextjs ao app
  */
-const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, 'client/.next')));
 
 /**
